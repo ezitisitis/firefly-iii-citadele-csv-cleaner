@@ -54,9 +54,9 @@ class Statement
     private function generateNewLine($line, bool $splitField = false): array
     {
         return [
-            $this->getDate($line[0]), // Payment execution date
+            $this->getDate($line[0]), // Transaction execution date
             $line[1], // Type
-            $splitField ? $this->getData($line[2], 'payment_date') : '', // Payment date
+            $splitField ? $this->getData($line[2], 'payment_date') : $this->getDate($line[0]), // Payment date
             $splitField ? $this->getData($line[2], 'beneficiary') : '', // Beneficiary
             !$splitField ? $line[2] : '', // Description
             $line[3], // Payment No.
